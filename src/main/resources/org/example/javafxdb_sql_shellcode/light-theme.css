@@ -1,0 +1,22 @@
+.root {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: black;
+}
+
+.button {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: black;
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: grey;
+}
+
+.table-view {
+    -fx-background-color: #fff;
+    -fx-text-background-color: black;
+    -fx-selection-bar: lightgray;
+    -fx-selection-bar-text: black;
+}
