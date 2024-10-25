@@ -16,9 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0"
-            prefWidth="807.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.javafxdb_sql_shellcode.DB_GUI_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="807.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxdb_sql_shellcode.DB_GUI_Controller">
     <children>
         <BorderPane layoutX="-2.0" layoutY="-1.0" prefHeight="535.0" prefWidth="807.0">
             <top>
@@ -26,35 +24,37 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open" onAction="#openFile"/> <!-- Open menu item with fx:id -->
-                                <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" onAction="#closeApplication"/> <!-- Close menu item with fx:id -->
+                                <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openFile" text="Open" /> <!-- Open menu item with fx:id -->
+                                <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#closeApplication" text="Close" /> <!-- Close menu item with fx:id -->
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete" onAction="#deleteRecord"/> <!-- Delete menu item with fx:id -->
+                                <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#deleteRecord" text="Delete" /> <!-- Delete menu item with fx:id -->
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="NewMenuItem">
                             <items>
-                                <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" onAction="#showAbout"/> <!-- Example About menu item -->
+                                <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#showAbout" text="About" /> <!-- Example About menu item -->
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Settings">
                             <items>
-                                <MenuItem fx:id="settingsCloseMenuItem" mnemonicParsing="false" text="Close" onAction="#closeApplication"/>
+                                <MenuItem fx:id="settingsCloseMenuItem" mnemonicParsing="false" onAction="#closeApplication" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem fx:id="helpAboutMenuItem" mnemonicParsing="false" text="About" onAction="#showAbout"/>
+                        <MenuItem fx:id="lightModeMenuItem" mnemonicParsing="false" text="Light Mode" onAction="#lightMode"/>
+                        <MenuItem fx:id="darkModeMenuItem" mnemonicParsing="false" text="Dark Mode" onAction="#darkMode"/>
+                                <MenuItem fx:id="helpAboutMenuItem" mnemonicParsing="false" onAction="#showAbout" text="About" />
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
             </top>
             <right>
-                <TableView fx:id="tv" prefHeight="501.0" prefWidth="507.0" BorderPane.alignment="CENTER" onMouseClicked="#selectedItemTV">
+                <TableView fx:id="tv" onMouseClicked="#selectedItemTV" prefHeight="501.0" prefWidth="507.0" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="tv_id" prefWidth="32.0" text="ID" />
                         <TableColumn fx:id="tv_fn" prefWidth="87.0" text="First Name" />
@@ -70,9 +70,7 @@
                     <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <ImageView fx:id="img_view" fitHeight="103.0" fitWidth="85.0" layoutX="16.0" layoutY="14.0"
-                                           onMouseClicked="#showImage" pickOnBounds="true" preserveRatio="true"
-                                           styleClass="profile_pic">
+                                <ImageView fx:id="img_view" fitHeight="103.0" fitWidth="85.0" layoutX="16.0" layoutY="14.0" onMouseClicked="#showImage" pickOnBounds="true" preserveRatio="true" styleClass="profile_pic">
                                     <image>
                                         <Image url="@profile.jpg" />
                                     </image></ImageView>
@@ -84,28 +82,27 @@
             <center>
                 <VBox prefHeight="476.0" prefWidth="233.0" BorderPane.alignment="CENTER">
                     <children>
-                        <TextField promptText="First Name" fx:id="first_name">
+                        <TextField fx:id="first_name" promptText="First Name">
                             <VBox.margin>
                                 <Insets left="10.0" right="10.0" top="5.0" />
                             </VBox.margin>
                         </TextField>
-                        <TextField promptText="Last Name" fx:id="last_name">
+                        <TextField fx:id="last_name" promptText="Last Name">
                             <VBox.margin>
                                 <Insets left="10.0" right="10.0" top="5.0" />
                             </VBox.margin>
                         </TextField>
-                        <TextField promptText="Department" fx:id="department">
+                        <TextField fx:id="department" promptText="Department">
                             <VBox.margin>
                                 <Insets left="10.0" right="10.0" top="5.0" />
                             </VBox.margin>
                         </TextField>
-                        <TextField promptText="Major" fx:id="major">
+                        <TextField fx:id="major" promptText="Major">
                             <VBox.margin>
                                 <Insets left="10.0" right="10.0" top="5.0" />
                             </VBox.margin>
                         </TextField>
-                        <Button minWidth="-Infinity" mnemonicParsing="false" styleClass="nav_btn" text="Clear"
-                                onAction="#clearForm">
+                        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#clearForm" styleClass="nav_btn" text="Clear">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </VBox.margin>
@@ -115,19 +112,19 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="nav_btn" text="Edit" onAction="#editRecord">
+                        <Button mnemonicParsing="false" onAction="#editRecord" styleClass="nav_btn" text="Edit">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="nav_btn" text="Delete" onAction="#deleteRecord">
+                        <Button mnemonicParsing="false" onAction="#deleteRecord" styleClass="nav_btn" text="Delete">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </VBox.margin>
                         </Button>
 
                         <!-- "Upload Image" button -->
-                        <Button mnemonicParsing="false" styleClass="nav_btn" text="Upload Image" onAction="#showImage">
+                        <Button mnemonicParsing="false" onAction="#showImage" styleClass="nav_btn" text="Upload Image">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </VBox.margin>

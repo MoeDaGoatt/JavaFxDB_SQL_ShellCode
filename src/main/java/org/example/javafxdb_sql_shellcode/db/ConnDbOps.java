@@ -4,12 +4,17 @@
  */
 package org.example.javafxdb_sql_shellcode.db;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import org.example.javafxdb_sql_shellcode.Person;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  *
@@ -20,7 +25,10 @@ public class ConnDbOps {
     final String DB_URL = "jdbc:mysql://hamzacsc311server.mysql.database.azure.com/DBname";
     final String USERNAME = "hamzaadmin";
     final String PASSWORD = "Omegalegand1";
-    
+    public ObservableList<Person> initialData;
+    ObservableList<Person> initialdata = FXCollections.<Person>observableArrayList();
+
+
     public  boolean connectToDatabase() {
         boolean hasRegistredUsers = false;
 
@@ -94,7 +102,7 @@ public class ConnDbOps {
         }
     }
 
-    public  void listAllUsers() {
+    public List<Person> listAllUsers() {
 
 
 
@@ -119,6 +127,7 @@ public class ConnDbOps {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public  void insertUser(String name, String email, String phone, String address, String password) {
@@ -146,6 +155,4 @@ public class ConnDbOps {
             e.printStackTrace();
         }
     }
-
-    
 }

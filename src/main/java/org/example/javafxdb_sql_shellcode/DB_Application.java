@@ -29,7 +29,7 @@ import javafx.util.Duration;
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("splash_screen.fxml"));
                 Scene scene = new Scene(root, 850, 560);
-                scene.getStylesheets().add("style.css");
+                scene.getStylesheets().add(getClass().getResource("style.css").toString());
                 primaryStage.setScene(scene);
                 primaryStage.show();
                 changeScene();
@@ -44,7 +44,7 @@ import javafx.util.Duration;
 
                 Scene currentScene = primaryStage.getScene();
                 Parent currentRoot = currentScene.getRoot();
-                currentScene.getStylesheets().add("style.css");
+                currentScene.getStylesheets().add(getClass().getResource("style.css").toString());
                 FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), currentRoot);
                 fadeOut.setFromValue(1);
                 fadeOut.setToValue(0);

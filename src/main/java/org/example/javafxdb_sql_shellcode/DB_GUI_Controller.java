@@ -20,9 +20,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.example.javafxdb_sql_shellcode.db.ConnDbOps;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.DatabaseMetaData;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -55,27 +58,40 @@ public class DB_GUI_Controller implements Initializable {
         @FXML
         private TableColumn<Person, String> tv_fn, tv_ln, tv_dept, tv_major;
 
-
-
-
+        private ConnDbOps dataBaseManager = new ConnDbOps();
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+
             tv_id.setCellValueFactory(new PropertyValueFactory<>("id"));
             tv_fn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
             tv_ln.setCellValueFactory(new PropertyValueFactory<>("lastName"));
             tv_dept.setCellValueFactory(new PropertyValueFactory<>("dept"));
             tv_major.setCellValueFactory(new PropertyValueFactory<>("major"));
 
+            dataBaseManager.connectToDatabase();
+            dataBaseManager.listAllUsers();
+            tv.setItems(dataBaseManager.initialData);
 
             tv.setItems(data);
 
             openMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.F, KeyCombination.CONTROL_DOWN));
             openMenuItem.setOnAction(this::openFile);
 
-//            img_view.setImage(new Image("path/to/default/image.jpg"));
 
+        }
 
+    @FXML
+        void darkMode(){
+            Scene scene = img_view.getScene();
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
+        }
 
+        @FXML
+        void lightMode() {
+            Scene scene = img_view.getScene();
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource("light-theme.css").toExternalForm());
         }
 
 
@@ -182,19 +198,9 @@ public class DB_GUI_Controller implements Initializable {
         public void showAbout(ActionEvent actionEvent) {
 
         }
-    @FXML
-    private void uploadProfilePicture() {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-//        File file = fileChooser.showOpenDialog(img_view.getScene().getWindow());
-//        if (file != null) {
-//            Image image = new Image(file.toURI().toString());
-//            img_view.setImage(image);
-//        } else {
-//        }
 
     }
 
 
 
-    }
+
