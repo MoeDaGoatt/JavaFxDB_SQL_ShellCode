@@ -59,7 +59,18 @@ public class DB_GUI_Controller implements Initializable {
         private TableColumn<Person, String> tv_fn, tv_ln, tv_dept, tv_major;
 
         private ConnDbOps dataBaseManager = new ConnDbOps();
-        @Override
+
+    /**
+     * initialize method
+     * @param url
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resourceBundle
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
+    @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
             tv_id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -80,6 +91,9 @@ public class DB_GUI_Controller implements Initializable {
 
         }
 
+    /**
+     * dar mode method
+     */
     @FXML
         void darkMode(){
             Scene scene = img_view.getScene();
@@ -87,6 +101,9 @@ public class DB_GUI_Controller implements Initializable {
             scene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
         }
 
+    /**
+     * light mode method
+     */
         @FXML
         void lightMode() {
             Scene scene = img_view.getScene();
@@ -95,10 +112,12 @@ public class DB_GUI_Controller implements Initializable {
         }
 
 
-
+    /**
+     * add new record method
+     */
     @FXML
     protected void addNewRecord() {
-        String imagePath = img_view.getImage() != null ? img_view.getImage().getUrl() : null; // Get image URL if it exists
+        String imagePath = img_view.getImage() != null ? img_view.getImage().getUrl() : null;
 
         Person person = new Person(
                 data.size() + 1,
@@ -115,7 +134,9 @@ public class DB_GUI_Controller implements Initializable {
     }
 
 
-
+    /**
+     * clear form method
+     */
     @FXML
         protected void clearForm() {
             first_name.clear();
@@ -124,12 +145,17 @@ public class DB_GUI_Controller implements Initializable {
             major.setText("");
         }
 
+    /**
+     * close application method
+     */
         @FXML
         protected void closeApplication() {
             System.exit(0);
         }
 
-
+    /**
+     * get record method
+     */
         @FXML
         protected void editRecord() {
             Person p= tv.getSelectionModel().getSelectedItem();
@@ -144,6 +170,9 @@ public class DB_GUI_Controller implements Initializable {
             }
         }
 
+    /**
+     * delete record method
+     */
         @FXML
         protected void deleteRecord() {
             Person p= tv.getSelectionModel().getSelectedItem();
@@ -155,7 +184,9 @@ public class DB_GUI_Controller implements Initializable {
         }
 
 
-
+    /**
+     * show image method
+     */
         @FXML
         protected void showImage() {
             File file= (new FileChooser()).showOpenDialog(img_view.getScene().getWindow());
@@ -165,10 +196,11 @@ public class DB_GUI_Controller implements Initializable {
         }
 
 
-
-
-
-        @FXML
+    /**
+     * selectedItem method
+     * @param mouseEvent
+     */
+    @FXML
         protected void selectedItemTV(MouseEvent mouseEvent) {
             Person p= tv.getSelectionModel().getSelectedItem();
             first_name.setText(p.getFirstName());
@@ -178,18 +210,27 @@ public class DB_GUI_Controller implements Initializable {
 
 
         }
-        @FXML
+
+    /**
+     * open file method
+     * @param actionEvent
+     */
+    @FXML
         public void openFile(ActionEvent actionEvent) {
             if (listPlace != null) {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Open Files");
-                Stage stage = (Stage) listPlace.getScene().getWindow(); // This line can throw NullPointerException
+                Stage stage = (Stage) listPlace.getScene().getWindow();
 
                 File selectedFile = fileChooser.showOpenDialog(stage);
             }
 
         }
-        @FXML
+
+    /**
+     * initialize method
+     */
+    @FXML
         public void initialize() {
             openMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.F, KeyCombination.ALT_DOWN));
             openMenuItem.setOnAction(this::openFile);

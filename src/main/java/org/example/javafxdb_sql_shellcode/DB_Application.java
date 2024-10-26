@@ -1,6 +1,7 @@
 package org.example.javafxdb_sql_shellcode;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,22 +22,27 @@ import javafx.util.Duration;
         public void start(Stage primaryStage) {
             this.primaryStage = primaryStage;
             this.primaryStage.setResizable(false);
-            showScene1();
+//            showScene1();
+            showSplashScreen();
 
         }
 
-        private void showScene1() {
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("splash_screen.fxml"));
-                Scene scene = new Scene(root, 850, 560);
-                scene.getStylesheets().add(getClass().getResource("style.css").toString());
-                primaryStage.setScene(scene);
-                primaryStage.show();
-                changeScene();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        private void showScene1() {
+//            try {
+//                Parent root = FXMLLoader.load(getClass().getResource("splash_screen.fxml"));
+//                Scene sc = new Scene(root, 850, 560);
+//                sc.getStylesheets().add(getClass().getResource("style.css").toString());
+//                primaryStage.setScene(sc);
+//                primaryStage.show();
+//                changeScene();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+private void showSplashScreen() {
+    SplashScreen splashScreen = new SplashScreen(primaryStage, this);
+    splashScreen.showSplashScreen();
+}
 
         public void changeScene() {
             try {
@@ -51,7 +57,7 @@ import javafx.util.Duration;
                 fadeOut.setOnFinished(e -> {
 
 
-                    Scene newScene = new Scene(newRoot,850, 560);
+                    Scene newScene = new Scene(newRoot, 850, 560);
                     primaryStage.setScene(newScene);
 
 
@@ -62,5 +68,4 @@ import javafx.util.Duration;
                 e.printStackTrace();
             }
         }
-
     }

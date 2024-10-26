@@ -8,6 +8,9 @@ public class Person {
     private String major;
     private String profilePath;
 
+    /**
+     * person class
+     */
     public Person() {
     }
 
@@ -19,6 +22,11 @@ public class Person {
         this.dept = dept;
         this.profilePath = profilePath;
     }
+
+    /**
+     * set profile pic path method
+     * @param profilePicturePath
+     */
     public void setProfilePicturePath(String profilePicturePath) {
         this.profilePath = profilePicturePath;
     }
@@ -27,42 +35,82 @@ public class Person {
         return profilePath;
     }
 
+    /**
+     * id setter method
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * get id method
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * set first name method
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * getter for first name
+     * @return
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * set last name setter
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * get last name getter
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * set dept setter
+     * @param dept
+     */
     public void setDept(String dept) {
         this.dept = dept;
     }
 
+    /**
+     * get dept method
+     * @return
+     */
     public String getDept() {
         return dept;
     }
 
+    /**
+     * set major method
+     * @param major
+     */
     public void setMajor(String major) {
         this.major = major;
     }
 
+    /**
+     * get major method
+     * @return
+     */
     public String getMajor() {
         return major;
     }
